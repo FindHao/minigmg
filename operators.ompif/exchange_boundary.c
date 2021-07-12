@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include "../timer.h"
 //------------------------------------------------------------------------------------------------------------------------------
-inline void DoBufferCopy(domain_type *domain, int level, int grid_id, int buffer){
+void DoBufferCopy(domain_type *domain, int level, int grid_id, int buffer){
   // copy 3D array from read_i,j,k of read[] to write_i,j,k in write[]
   int   dim_i      = domain->bufferCopies[level][buffer].dim.i;
   int   dim_j      = domain->bufferCopies[level][buffer].dim.j;
