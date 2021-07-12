@@ -13,6 +13,7 @@
 #include <mpi.h>
 #endif
 //------------------------------------------------------------------------------------------------------------------------------
+#include <unistd.h>
 #include "timer.h"
 #include "defines.h"
 #include "box.h"
@@ -613,7 +614,6 @@ void MGBuild(domain_type * domain, double a, double b, double h0){
 
   // form all restrictions of beta_*[] for all boxes...
   #if 0
-  #warning cell centered beta's are first restricted then projected for faces
   for(level=0;level<numLevels-1;level++){restriction(domain,level,__beta,__beta);}
   for(level=0;level<numLevels;level++){
     exchange_boundary(domain,level,__beta,1,1,1);
@@ -622,7 +622,6 @@ void MGBuild(domain_type * domain, double a, double b, double h0){
     project_cell_to_face(domain,level,__beta,__beta_k,2);
   }
   #else
-  #warning cell centered beta's are first projected to faces, then restricted to coarsest grid
      exchange_boundary(domain,0,__beta,1,1,1);
   project_cell_to_face(domain,0,__beta,__beta_i,0);
   project_cell_to_face(domain,0,__beta,__beta_j,1);
