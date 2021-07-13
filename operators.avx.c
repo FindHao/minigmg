@@ -8,7 +8,10 @@
 #include <stdint.h>
 #include <string.h>
 #include <math.h>
-#include <immintrin.h>
+// #include <immintrin.h>
+#define SIMDE_ENABLE_NATIVE_ALIASES
+#define _MM_HINT_T0 1
+#include "simde/x86/avx2.h"
 //------------------------------------------------------------------------------------------------------------------------------
 #include "timer.h"
 #include "defines.h"
